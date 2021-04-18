@@ -5,10 +5,10 @@ import java.util.UUID;
 
 public class TodosService {
 
-  public Map<String, String> createTodo() {
+  public Map<String, String> createTodo(Map<String, String> createTodoCommand) {
     return Map.of(
         "id", UUID.randomUUID().toString(),
-        "title", "Go to bed"
+        "title", createTodoCommand.get("title")
     );
   }
 }

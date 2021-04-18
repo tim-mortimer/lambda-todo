@@ -3,6 +3,7 @@ package todos;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -23,7 +24,7 @@ public class CreateTodoRequestHandlerTest {
   public void creating_a_todo() {
     String todoId = UUID.randomUUID().toString();
 
-    when(todosService.createTodo()).thenReturn(Map.of(
+    when(todosService.createTodo(any())).thenReturn(Map.of(
         "id", todoId,
         "title", "Go to the shops"
     ));
