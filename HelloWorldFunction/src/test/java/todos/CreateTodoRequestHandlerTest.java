@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.UUID;
 import org.junit.Test;
 
-public class CreateTodoTest {
+public class CreateTodoRequestHandlerTest {
 
   Gson gson = new Gson();
 
@@ -28,11 +28,11 @@ public class CreateTodoTest {
         "title", "Go to the shops"
     ));
 
-    CreateTodo createTodo = new CreateTodo(todosService);
+    CreateTodoRequestHandler handler = new CreateTodoRequestHandler(todosService);
 
     APIGatewayProxyRequestEvent request =
         new APIGatewayProxyRequestEvent().withBody(gson.toJson(Map.of("title", "Go to the shops")));
-    APIGatewayProxyResponseEvent response = createTodo.handleRequest(request, null);
+    APIGatewayProxyResponseEvent response = handler.handleRequest(request, null);
 
     assertEquals(201, response.getStatusCode().intValue());
     assertEquals("application/json", response.getHeaders().get("Content-Type"));

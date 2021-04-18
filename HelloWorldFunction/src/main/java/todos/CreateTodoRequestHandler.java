@@ -7,18 +7,18 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent
 import com.google.gson.Gson;
 import java.util.Map;
 
-public class CreateTodo implements
+public class CreateTodoRequestHandler implements
     RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
   TodosService todosService;
 
   Gson gson = new Gson();
 
-  public CreateTodo() {
+  public CreateTodoRequestHandler() {
     this.todosService = new TodosService();
   }
 
-  public CreateTodo(TodosService todosService) {
+  public CreateTodoRequestHandler(TodosService todosService) {
     this.todosService = todosService;
   }
 
